@@ -7,21 +7,24 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-
-	<context:component-scan base-package="org.sistema.springmvc.hello" />
+	<context:component-scan base-package="org.sistema.springmvc.forms.controllers" />
 
 	<!-- With this all the content from resources dir will be treated as static 
 		content: js, css, images, -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
-
 	<mvc:annotation-driven />
-
+	
+	<mvc:view-controller path="/users"/>
+	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean id="userDAO" class="org.sistema.springmvc.forms.dao.impl.fakes.FakeUserDAO">		
 	</bean>
 
 </beans>
