@@ -17,10 +17,6 @@ import org.sistema.springmvc.forms.models.User;
  */
 public class FakeUserDAO implements UserDAO {
 
-	public void setDataSource(DataSource ds) {
-
-	}
-
 	/**
 	 * Returns a number greater or equal than 0 if everything goes well.
 	 */
