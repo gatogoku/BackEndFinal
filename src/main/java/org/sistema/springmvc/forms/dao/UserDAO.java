@@ -2,8 +2,6 @@ package org.sistema.springmvc.forms.dao;
 
 import java.util.List;
 
-import javax.sql.DataSource;
-
 import org.sistema.springmvc.forms.models.User;
 
 /**

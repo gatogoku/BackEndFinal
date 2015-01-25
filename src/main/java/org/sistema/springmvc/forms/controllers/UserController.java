@@ -55,7 +55,7 @@ public class UserController {
 	}
 
 	/**
-	 * handles /users/new
+	 * handles /users/new by GET
 	 * 
 	 * @return the name of the view to show RequestMapping({"/users/new"})
 	 */
@@ -69,7 +69,7 @@ public class UserController {
 	/**
 	 * handles /users/new by POST
 	 * 
-	 * @return the name of the view to show RequestMapping({"/users/created"})
+	 * @return the name of the view to show RequestMapping({"/users/new"})
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = { "/users/new" })
 	public ModelAndView createUser(User user) {

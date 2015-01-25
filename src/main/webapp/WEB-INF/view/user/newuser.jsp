@@ -40,7 +40,7 @@
 			<h1>New user</h1>
 			<p>See this user info</p>
 		</div>
-		<sf:form method="post" modelAttribute="user">
+		<sf:form method="post" modelAttribute="user" action="/users/new">
 			<div class="form-group">
 				<label for="login">Login</label>
 				<sf:input path="login" class="form-control" placeholder="Login" />
