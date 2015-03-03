@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- No pueden convivir c & sgf? da error y no arranca -->
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -37,29 +37,28 @@
 	</nav>
 	<div class="container">
 		<div class="jumbotron">
-			<h1>New user</h1>
-			<p>See this user info</p>
+			<h1>User created</h1>
 		</div>
-		<!-- En action se debe indicar la acción a la cuál queremos dirigir la petición. 
-		El controlador será el mismo que el que ha servido esta página. Si se quiere especificar
-		otro, se debe componer una nueva ruta mediante c:url -->
-		<sf:form method="post" modelAttribute="user" action="new">
-			<div class="form-group">
-				<label for="login">Login</label>
-				<sf:input path="login" class="form-control" placeholder="Login" />
-			</div>
-			<div class="form-group">
-				<label for="password">Password</label>
-				<sf:input path="password" class="form-control" type="password"
-					placeholder="Password" />
-			</div>
-			<div class="form-group">
-				<label for="description">Description</label>
-				<sf:textarea path="description" class="form-control"
-					placeholder="Description" />
-			</div>
-			<sf:button class="btn btn-primary pull-right">Create</sf:button>
-		</sf:form>
+		<div class="alert alert-success" role="alert">The following user
+			has been updated successfully</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Login</th>
+					<th>Description</th>
+					<th>Password</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>${user.id}</td>
+					<td>${user.login}</td>
+					<td>${user.description}</td>
+					<td>${user.password}</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	<footer class="footer">
 		<div class="container">

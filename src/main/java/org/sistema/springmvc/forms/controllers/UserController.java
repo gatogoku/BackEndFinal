@@ -5,8 +5,11 @@ import java.util.Map;
 
 import org.sistema.springmvc.forms.dao.UserDAO;
 import org.sistema.springmvc.forms.models.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class UserController {
+	private static final Logger logger = LoggerFactory
+			.getLogger(UserController.class);
 
 	@Autowired
 	private UserDAO userDAO;
@@ -31,9 +36,11 @@ public class UserController {
 	 * @return the name of the view to show RequestMapping({"/users"})
 	 */
 
-	@RequestMapping(method = RequestMethod.GET, value = {"/", "/users" })
+	@RequestMapping(method = RequestMethod.GET, value = { "/", "/users" })
 	public String showUsers(Map<String, Object> model) {
-		List<User> users = userDAO.get();
+		logger.info("Product showUsers. ");
+
+		List<User> users = userDAO.selectAll();
 		model.put("users", users);
 
 		return "user/users";
@@ -48,9 +55,11 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.GET, value = { "/users/{id}" })
 	public String userDetail(@PathVariable(value = "id") Integer id,
 			Map<String, Object> model) {
-		User user = userDAO.find(id);
+		logger.info("User detail");
+
+		User user = userDAO.selectById(id);
 		model.put("user", user);
-		// We return view name
+
 		return "user/userdetail";
 	}
 
@@ -61,8 +70,10 @@ public class UserController {
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = { "/users/new" })
 	public String newUser(Map<String, Object> model) {
+		logger.info("Showing custom view GET ");
+
 		model.put("user", new User());
-		// We return view name
+
 		return "user/newuser";
 	}
 
@@ -73,9 +84,11 @@ public class UserController {
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = { "/users/new" })
 	public ModelAndView createUser(User user) {
+		logger.info("Saveview POST " + user.getId());
+
 		ModelAndView modelAndView = new ModelAndView();
 
-		if (userDAO.create(user) > 0) {
+		if (userDAO.insert(user) > 0) {
 			// We return view name
 			modelAndView.setViewName("user/created");
 			modelAndView.addObject("user", user);
@@ -87,4 +100,50 @@ public class UserController {
 		}
 		return modelAndView;
 	}
+
+	/**
+	 * Simply selects the update view
+	 */
+	@RequestMapping(value = "/users/update/{id}", method = RequestMethod.GET)
+	public String update(@PathVariable(value = "id") Integer userId, Model model) {
+		logger.info("Showing update view GET ");
+
+		// We find the product through DAO and load into model
+		model.addAttribute("user", userDAO.selectById(userId));
+
+		return "user/update";
+	}
+
+	/**
+	 * Handles the POST from the Custom.jsp page to update the User.
+	 */
+	@RequestMapping(value = "/users/saveupdate", method = RequestMethod.POST)
+	public ModelAndView saveUpdate(User user) {
+		logger.info("Save update " + user.getId());
+
+		userDAO.update(user.getId(), user);
+
+		ModelAndView modelAndView = new ModelAndView();
+
+		// We pass the user received through this object
+		modelAndView.addObject("user", user);
+
+		// The same as return "user/saveUpdate"
+		modelAndView.setViewName("user/saveUpdated");
+		return modelAndView;
+	}
+
+	/**
+	 * Delete the specific user
+	 */
+	@RequestMapping(value = "/users/delete/{id}", method = RequestMethod.GET)
+	public String delete(@PathVariable(value = "id") Integer userId, Model model) {
+		logger.info("Product detail /delete");
+		
+		userDAO.delete(userId);
+		model.addAttribute("userId", userId);
+
+		return "user/deleted";
+	}
+
 }
