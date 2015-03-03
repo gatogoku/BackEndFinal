@@ -57,10 +57,10 @@
 						<td><a class="btn btn-sm btn-primary"
 							href="<s:url value="/users/${user.id}" />"
 							title="Detailed info"> see detail</a>
-							<a class="btn btn-sm btn-primary"
+							<a class="btn btn-sm btn-success"
 							href="<s:url value="/users/update/${user.id}" />"
 							title="Update"> update</a>
-							<a class="btn btn-sm btn-primary"
+							<a class="btn btn-sm btn-danger"
 							href="<s:url value="/users/delete/${user.id}" />"
 							title="Delete"> delete</a>
 							</td>

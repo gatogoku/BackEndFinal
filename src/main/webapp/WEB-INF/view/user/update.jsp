@@ -4,35 +4,63 @@
 <%@ page session="false"%>
 <html>
 <head>
-<title>Update.jsp</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spring forms :: Users</title>
+
+<!-- Bootstrap -->
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
 <body>
-	<a href="#">Users app</a>
-	<ul>
-		<li><a href="<s:url value="/users/" />" title="View users">View
-				users</a></li>
-		<li><a href="<s:url value="/users/new" />" title="New user">New
-				user</a></li>
-	</ul>
-	<h1>Update user</h1>
-	<s:url var="action" value="/users/saveupdate" />
-	<sf:form method="post" action="${action}" modelAttribute="user">
-		<sf:hidden path="id" />
-		<div class="form-group">
-			<label for="login">Login</label>
-			<sf:input path="login" placeholder="Login" />
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Users app</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="<s:url value="/assignments" />"
+						title="View Users">View assigments</a></li>
+					<li><a href="<s:url value="/users/" />" title="View users">View
+							users</a></li>
+					<li class="active"><a href="<s:url value="/users/new" />"
+						title="New user">New user</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
 		</div>
-		<div class="form-group">
-			<label for="password">Password</label>
-			<sf:input path="password" type="password" placeholder="Password" />
+	</nav>
+	<div class="container">
+		<div class="jumbotron">
+			<h1>Update user</h1>
 		</div>
-		<div class="form-group">
-			<label for="description">Description</label>
-			<sf:textarea path="description" placeholder="Description" />
-		</div>
-		<sf:button>Update</sf:button>
-	</sf:form>
+		<s:url var="action" value="/users/saveupdate" />
+		<sf:form method="post" action="${action}" modelAttribute="user">
+			<sf:hidden path="id" />
+			<div class="form-group">
+				<label for="login">Login</label>
+				<sf:input path="login" class="form-control" placeholder="Login" />
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<sf:input path="password" class="form-control" type="password"
+					placeholder="Password" />
+			</div>
+			<div class="form-group">
+				<label for="description">Description</label>
+				<sf:textarea path="description" class="form-control"
+					placeholder="Description" />
+			</div>
+			<sf:button class="btn btn-primary pull-right">Update</sf:button>
+		</sf:form>
 
-	<p class="text-muted">&copy; 2015 Eugenia Pérez</p>
+		<footer class="footer">
+			<div class="container">
+				<p class="text-muted">&copy; 2015 Eugenia Pérez</p>
+			</div>
+		</footer>
 </body>
 </html>
