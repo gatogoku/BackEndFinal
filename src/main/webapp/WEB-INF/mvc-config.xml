@@ -24,7 +24,5 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<bean id="userDAO" class="org.sistema.springmvc.forms.dao.impl.fakes.FakeUserDAO">		
-	</bean>
 
 </beans>
