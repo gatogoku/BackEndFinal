@@ -17,19 +17,16 @@
 	rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Users app</a>
+					<a class="navbar-brand" href="#">citys app -> DELEGACIONES</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="<s:url value="/assignments" />"
-						title="View Users">View assigments</a></li>
-					<li class="active"><a href="<s:url value="/users/" />"
-						title="View users">View users</a></li>
-					<li><a href="<s:url value="/users/new" />" title="New user">New
-							user</a></li>
+					<li><a href="<s:url value="/delegaciones" />"   title="View Users">VIEW DELEGATIONS</a></li>
+					<li class="active"><a href="<s:url value="/ciudades/" />"    title="View users">VIEW CITY</a></li>
+					<li><a href="<s:url value="/ciudad/newcity/" />" title="New user">NEW CITY</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -37,36 +34,27 @@
 	</nav>
 	<div class="container">
 		<div class="jumbotron">
-			<h1>Users detail</h1>
-			<p>See this user info</p>
+			<h1>DELEGATION CREATED</h1>
 		</div>
-
-		<c:choose>
-			<c:when test="${not empty user}">
-				<table class="table">
-					<thead>
-						<tr>
+		<div class="alert alert-success" role="alert">The following delegation
+			has been updated successfully</div>
+		<table class="table">
+			<thead>
+				<tr>
 							<th>ID</th>
-							<th>Login</th>
-							<th>Description</th>
-							<th>Password</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>${user.id}</td>
-							<td>${user.login}</td>
-							<td>${user.description}</td>
-							<td>${user.password}</td>
-						</tr>
-					</tbody>
-				</table>
-			</c:when>
-			<c:otherwise>
-				<div class="alert alert-warning" role="alert">A user with the
-					id specified has not been found. Please, try again</div>
-			</c:otherwise>
-		</c:choose>
+							<th>NOMBRE</th>
+							<th>DESCRIPCION</th>
+							<th>DIRECCION</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+						<td>${delegacion.id}</td>
+						<td>${delegacion.nombre}</td>
+						<td>${delegacion.descripcion}</td>
+						<td>${delegacion.direccion}</td>
+			</tbody>
+		</table>
 	</div>
 	<footer class="footer">
 		<div class="container">

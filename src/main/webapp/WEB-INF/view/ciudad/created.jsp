@@ -9,27 +9,24 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spring forms :: Users</title>
+<title>Spring forms :: CIUDADES</title>
 
 <!-- Bootstrap -->
 <link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
-	rel="stylesheet">
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Users app</a>
+				<a class="navbar-brand" href="#">citys app</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="<s:url value="/assignments" />"
-						title="View Users">View assigments</a></li>
-					<li><a href="<s:url value="/users/" />" title="View users">View
-							users</a></li>
-					<li class="active"><a href="<s:url value="/users/new" />"
-						title="New user">New user</a></li>
+					<li><a href="<s:url value="/delegaciones" />"   title="View Users">VIEW DELEGATIONS</a></li>
+					<li class="active"><a href="<s:url value="/ciudades/" />"    title="View users">VIEW CITY</a></li>
+					<li><a href="<s:url value="/ciudad/newcity/" />" title="New user">NEW CITY</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -37,25 +34,24 @@
 	</nav>
 	<div class="container">
 		<div class="jumbotron">
-			<h1>User created</h1>
+			<h1>City created</h1>
 		</div>
-		<div class="alert alert-success" role="alert">The following user
-			has been updated successfully</div>
+		<div class="alert alert-success" role="alert">The following city has been created successfully</div>
 		<table class="table">
 			<thead>
 				<tr>
-					<th>ID</th>
-					<th>Login</th>
-					<th>Description</th>
-					<th>Password</th>
+							<th>ID</th>
+							<th>NOMBRE</th>
+							<th>CODIGO POSTAL</th>
+							<th>ID PROVINCIA</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td>${user.id}</td>
-					<td>${user.login}</td>
-					<td>${user.description}</td>
-					<td>${user.password}</td>
+					<td>${user.nombre}</td>
+					<td>${user.cpostal}</td>
+					<td>${user.idProvincia}</td>
 				</tr>
 			</tbody>
 		</table>

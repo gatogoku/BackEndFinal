@@ -20,50 +20,49 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Users app</a>
+				<a class="navbar-brand" href="#">CITYS APP -> DELEGATIONS</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="<s:url value="/assignments" />"
-						title="View Users">View assigments</a></li>
-					<li class="active"><a href="<s:url value="/users/" />"
-						title="View users">View users</a></li>
-					<li><a href="<s:url value="/users/new" />" title="New user">New
-							user</a></li>
+					<li><a href="<s:url value="/delegaciones" />"   title="View Users">VIEW DELEGATIONS</a></li>
+					<li class="active"><a href="<s:url value="/ciudades/" />"    title="View users">VIEW CITY</a></li>
+					<li><a href="<s:url value="/ciudad/newdelegacion/" />" title="New user">NEW CITY</a></li>
 				</ul>
+				
+				
+				
 			</div>
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
 	<div class="container">
 		<div class="jumbotron">
-			<h1>Users list</h1>
-			<p>These are the users currently in the system.</p>
+			<h1>DELEGATIONS LIST</h1>
+			<p>These are the delegacions currently in the system.</p>
 		</div>
 
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Login</th>
-					<th>Description</th>
-					<th>Actions</th>
+					<th>NOMBRE</th>
+					<th>DESCRIPCION</th>
+					<th>DIRECCION</th>
+					<th>CIUDAD</th>
+					
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${users}" var="user">
+				<c:forEach items="${delegations}" var="delegacion">
 					<tr>
-						<td>${user.login}</td>
-						<td>${user.description}</td>
-						<td><a class="btn btn-sm btn-primary"
-							href="<s:url value="/users/${user.id}" />"
-							title="Detailed info"> see detail</a>
-							<a class="btn btn-sm btn-success"
-							href="<s:url value="/users/update/${user.id}" />"
-							title="Update"> update</a>
-							<a class="btn btn-sm btn-danger"
-							href="<s:url value="/users/delete/${user.id}" />"
-							title="Delete"> delete</a>
-							</td>
+						<td>${delegacion.nombre}</td>
+						<td>${delegacion.descripcion}</td>
+						<td>${delegacion.direccion}</td>
+						<td>${delegacion.id}</td>
+						<td>
+							<a class="btn btn-sm btn-primary" href="<s:url value="/delegacion/${delegacion.id}" />" title="Detailed info"> see detail</a>
+							<a class="btn btn-sm btn-success" href="<s:url value="/delegacion/update/${delegacion.id}" />" title="Update"> update</a>
+							<a class="btn btn-sm btn-danger" href="<s:url value="/delegacion/delete/${delegacion.id}" />" title="Delete"> delete</a>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

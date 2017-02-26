@@ -20,16 +20,13 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Users app</a>
+				<a class="navbar-brand" href="#">citys app</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="<s:url value="/assignments" />"
-						title="View Users">View assigments</a></li>
-					<li><a href="<s:url value="/users/" />" title="View users">View
-							users</a></li>
-					<li class="active"><a href="<s:url value="/users/new" />"
-						title="New user">New user</a></li>
+					<li><a href="<s:url value="/delegaciones" />"   title="View Users">VIEW DELEGATIONS</a></li>
+					<li class="active"><a href="<s:url value="/ciudades/" />"    title="View users">VIEW CITY</a></li>
+					<li><a href="<s:url value="/ciudad/newcity/" />" title="New user">NEW CITY</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -37,10 +34,36 @@
 	</nav>
 	<div class="container">
 		<div class="jumbotron">
-			<h1>User created</h1>
+			<h1>City detail</h1>
+			<p>See this city info</p>
 		</div>
-		<div class="alert alert-success" role="alert">The user
-			${user.id} has been removed successfully</div>
+
+		<c:choose>
+			<c:when test="${not empty user}">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>NOMBRE</th>
+							<th>CODIGO POSTAL</th>
+							<th>ID PROVINCIA</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>${user.id}</td>
+							<td>${user.nombre}</td>
+							<td>${user.cpostal}</td>
+							<td>${user.idProvincia}</td>
+						</tr>
+					</tbody>
+				</table>
+			</c:when>
+			<c:otherwise>
+				<div class="alert alert-warning" role="alert">A city with the
+					id specified has not been found. Please, try again</div>
+			</c:otherwise>
+		</c:choose>
 	</div>
 	<footer class="footer">
 		<div class="container">

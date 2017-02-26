@@ -17,19 +17,16 @@
 	rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Users app</a>
+				<a class="navbar-brand" href="#">citys app</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="<s:url value="/assignments" />"
-						title="View Users">View assigments</a></li>
-					<li><a href="<s:url value="/users/" />" title="View users">View
-							users</a></li>
-					<li class="active"><a href="<s:url value="/users/new" />"
-						title="New user">New user</a></li>
+					<li><a href="<s:url value="/delegaciones" />"   title="View Users">VIEW DELEGATIONS</a></li>
+					<li class="active"><a href="<s:url value="/ciudades/" />"    title="View users">VIEW CITY</a></li>
+					<li><a href="<s:url value="/ciudad/newcity/" />" title="New user">NEW CITY</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -37,28 +34,29 @@
 	</nav>
 	<div class="container">
 		<div class="jumbotron">
-			<h1>New user</h1>
-			<p>See this user info</p>
+			<h1>New City</h1>
+			<p>See this city info</p>
 		</div>
 		<!-- En action se debe indicar la acción a la cuál queremos dirigir la petición. 
 		El controlador será el mismo que el que ha servido esta página. Si se quiere especificar
 		otro, se debe componer una nueva ruta mediante c:url -->
-		<sf:form method="post" modelAttribute="user" action="new">
+		<sf:form id="createUserForm"  method="post" modelAttribute="ciudad" action="new" >
 			<div class="form-group">
-				<label for="login">Login</label>
-				<sf:input path="login" class="form-control" placeholder="Login" />
+				<label for="login">NOMBRE</label>
+				<sf:input path="nombre" class="form-control" placeholder="nombre" />
+				<sf:errors path="nombre" cssClass="error" />
 			</div>
 			<div class="form-group">
-				<label for="password">Password</label>
-				<sf:input path="password" class="form-control" type="password"
-					placeholder="Password" />
+				<label for="password">CODIGO POSTAL</label>
+				<sf:input path="cpostal" class="form-control" placeholder="cpostal" />
+				<sf:errors path="cpostal" cssClass="error" />
 			</div>
 			<div class="form-group">
-				<label for="description">Description</label>
-				<sf:textarea path="description" class="form-control"
-					placeholder="Description" />
+				<label for="description">ID PROVINCIA</label>
+				<sf:textarea path="idProvincia" class="form-control" placeholder="idprovincia" />
+				<sf:errors path="idProvincia" cssClass="error" />
 			</div>
-			<sf:button class="btn btn-primary pull-right">Create</sf:button>
+			<sf:button class="btn btn-primary pull-right">CREATE</sf:button>
 		</sf:form>
 	</div>
 	<footer class="footer">
@@ -66,5 +64,7 @@
 			<p class="text-muted">&copy; 2015 Eugenia Pérez</p>
 		</div>
 	</footer>
+	
+	<script src="<c:url value="/resources/js/validateUserForm.js" />"></script>
 </body>
 </html>

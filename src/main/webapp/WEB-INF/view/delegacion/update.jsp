@@ -18,16 +18,13 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Users app</a>
+					<a class="navbar-brand" href="#">citys app -> DELEGACIONES</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="<s:url value="/assignments" />"
-						title="View Users">View assigments</a></li>
-					<li><a href="<s:url value="/users/" />" title="View users">View
-							users</a></li>
-					<li class="active"><a href="<s:url value="/users/new" />"
-						title="New user">New user</a></li>
+					<li><a href="<s:url value="/delegaciones" />"   title="View Users">VIEW DELEGATIONS</a></li>
+					<li class="active"><a href="<s:url value="/ciudades/" />"    title="View users">VIEW CITY</a></li>
+					<li><a href="<s:url value="/ciudad/newcity/" />" title="New user">NEW CITY</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -35,32 +32,37 @@
 	</nav>
 	<div class="container">
 		<div class="jumbotron">
-			<h1>Update user</h1>
+			<h1>UPDATE DELEGATION</h1>
 		</div>
-		<s:url var="action" value="/users/saveupdate" />
-		<sf:form method="post" action="${action}" modelAttribute="user">
-			<sf:hidden path="id" />
+		<s:url var="action" value="/delegacion/saveupdate" />
+		<sf:form method="post" action="${action}" modelAttribute="delegacion">
+			<sf:hidden path="id"/>
 			<div class="form-group">
-				<label for="login">Login</label>
-				<sf:input path="login" class="form-control" placeholder="Login" />
+				<label for="login">NOMBRE</label>
+				<sf:input path="nombre" class="form-control"  />
+				<sf:errors path="nombre" cssClass="error" />
 			</div>
 			<div class="form-group">
-				<label for="password">Password</label>
-				<sf:input path="password" class="form-control" type="password"
-					placeholder="Password" />
+				<label for="password">DESCRIPCION</label>
+				<sf:input path="descripcion" class="form-control"  />
+				<sf:errors path="descripcion" cssClass="error" />
 			</div>
 			<div class="form-group">
-				<label for="description">Description</label>
-				<sf:textarea path="description" class="form-control"
-					placeholder="Description" />
+				<label for="description">DIRECCION</label>
+				<sf:textarea path="direccion" class="form-control" />
+				<sf:errors path="direccion" cssClass="error" />
 			</div>
+			<sf:hidden path="ciudad.id"/>
 			<sf:button class="btn btn-primary pull-right">Update</sf:button>
+			
 		</sf:form>
-
+</div>
 		<footer class="footer">
 			<div class="container">
 				<p class="text-muted">&copy; 2015 Eugenia Pérez</p>
 			</div>
 		</footer>
+		<script src="<c:url value="/resources/js/validateUserForm.js" />"></script>
+		
 </body>
 </html>

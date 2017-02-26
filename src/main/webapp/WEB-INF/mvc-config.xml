@@ -15,7 +15,7 @@
 
 	<mvc:annotation-driven />
 	
-	<mvc:view-controller path="/users"/>
+	<mvc:view-controller path="/delegaciones"/><!-- RUTA EN LA QUE SE INICIA LA APLICACOIN -->
 	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -23,6 +23,40 @@
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
+	
+	
+	<context:component-scan base-package="org.sistema.springmvc.formsdao.api" />
+	<mvc:annotation-driven />   
+  
+	
+
+
+ <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+              <property name="paramName" value="idioma"></property>
+        </bean>
+<mvc:interceptors>  
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+              <property name="paramName" value="idioma"></property>
+        </bean>
+</mvc:interceptors>
+
+
+<bean id="handlerMapping" class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
+    <property name="interceptors">
+        <ref bean="localeChangeInterceptor" />
+    </property>
+</bean>
+
+
+
+
+
+
+
+
+
+
 
 
 </beans>

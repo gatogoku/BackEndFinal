@@ -2,13 +2,147 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.1.5.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.1.5.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd"
+    
+     xmlns:mvc="http://www.springframework.org/schema/mvc">
 
 	<!-- Uncomment and add your base-package here: <context:component-scan base-package="org.springframework.samples.service"/> -->
 
 
-	<bean id="userDAO" class="org.sistema.springmvc.forms.dao.impl.fakes.FakeUserDAO">
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/hibernatemvc" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+		
 	</bean>
 
+	<!-- Definition for clientJDBCTemplate bean -->
+	<bean id="ciudadDAO" class="org.sistema.springmvc.forms.impl.CiudadDAOHibernate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="delegacionDAO" class="org.sistema.springmvc.forms.impl.DelegacionDAOHibernate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="ciudadController" class="org.sistema.springmvc.forms.controllers.CiudadController">
+		<property name="ciudadDAO" ref="ciudadDAO" />
+			<property name="delegacionDAO" ref="delegacionDAO" />
+			
+	</bean>
+		<bean id="delegacionController" class="org.sistema.springmvc.forms.controllers.DelegacionController">
+		<property name="ciudadDAO" ref="ciudadDAO" />
+			<property name="delegacionDAO" ref="delegacionDAO" />
+		</bean>
+		
+		<bean id="delegacionApiController" class="org.sistema.springmvc.formsdao.api.DelegacionApiController">
+		<property name="ciudadDAO" ref="ciudadDAO" />
+			<property name="delegacionDAO" ref="delegacionDAO" />
+		</bean>
+		
+		
+		 <bean class="org.sistema.springmvc.forms.hibernate.HibernateUtil" factory-method="getSessionFactory"  />
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="defaultLocale" value="en"/>
+		<property name="cookieName" value="idioma" />
+	</bean>
+		 
+		 
+		 <bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:messages" />
+		<property name="defaultEncoding" value="UTF-8"/>
+	</bean>
+	
+	
+	
+	
+
+ 
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+		 
+
+		 
+		 
+		 
+		 
+	
+
+	
+
+	
+
+		 
+		
+	
+		
 </beans>
